@@ -30,7 +30,7 @@ y_test <- read.table("./Data/Dataset/test/y_test.txt")
 subject_test <- read.table("./Data/Dataset/test/subject_test.txt")
 
 # Reading feature vector:
-features <- read.table('./data/Dataset/features.txt', as.is = TRUE)
+features <- read.table('./data/Dataset/features.txt')
 
 # Reading activity labels:
 activities = read.table('./data/Dataset/activity_labels.txt')
@@ -43,10 +43,7 @@ Merged <- rbind(
   cbind(x_test, y_test, subject_test)
 )
 
-# remove individual data tables to clean environment
-rm(x_train, y_train, subject_train, x_test, y_test, subject_test)
-
-# assign column names
+# set column names
 colnames(Merged) <- c("subject", features[, 2], "activity")
 
 # 2 - Extract measurements on the mean and standard deviation or each measurement (subset w/ desired cols.):
